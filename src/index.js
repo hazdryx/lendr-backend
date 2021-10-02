@@ -1,20 +1,8 @@
 const express = require('express');
-const history = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const app = express();
-
-// Add API backend.
-app.use('/api', require('./api'));
-
-// Add vue frontend
-const vue = express.static('./public');
-app.use(vue);
-app.use(history({
-    disableDotRule: true
-}));
-app.use(vue);
+const app = express().use('/api', require('./api'));
 
 // Connect to database.
 mongoose.connect(process.env.DB_HOST, {
