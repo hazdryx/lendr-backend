@@ -10,5 +10,6 @@ mongoose.connect(process.env.DB_HOST, {
     useUnifiedTopology: true
 }).then(() => {
     // Start app after connection.
-    app.listen(process.env.PORT, () => console.log('Running the lendr web app on port 3000.'));
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Running the lendr web app on port ${port}.`));
 }).catch((err) => console.error(err));
